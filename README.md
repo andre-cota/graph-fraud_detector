@@ -5,6 +5,6 @@ Esse repositorio visa armazenar e documentar o trabalho de grafos do quinto per√
 
 Diagrama de Classes:
 
-![Diagrama de Classes](Documentacao/uml/GrafosUML.jpg)
+![Diagrama de Classes](Documentacao/UML/GrafosUML.jpg)
 
 
