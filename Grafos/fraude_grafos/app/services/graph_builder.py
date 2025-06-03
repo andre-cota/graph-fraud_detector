@@ -9,17 +9,18 @@ class GraphBuilder:
         self.grafo = {} 
 
     def construir_grafo(self):
-        """
-        Constrói o grafo direcionado a partir das transações.
-        """
+        # Inicializa o grafo com todas as contas
+        for conta in self.contas.values():
+            self.grafo[conta.id] = []
+
+        # Adiciona as conexões
         for transacao in self.transacoes:
             origem_id = transacao.conta_origem.id
             destino_id = transacao.conta_destino.id
-
-            if origem_id not in self.grafo:
-                self.grafo[origem_id] = []
-
             self.grafo[origem_id].append(destino_id)
+        
+        print(f"Grafo construído com {len(self.grafo)} contas")
+        return self
 
     def get_vizinhos(self, id_conta):
         """
