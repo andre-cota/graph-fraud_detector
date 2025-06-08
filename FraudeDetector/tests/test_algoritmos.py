@@ -4,7 +4,7 @@ from algorithms.anomalias import nos_com_muitos_envios, nos_com_muitos_recebimen
 
 CAMINHO_CSV_KAGGLE = 'data/bs140513_032310.csv'
 CAMINHO_CSV_NOVO = 'data/fraud_detection.csv'
-CAMINHO_CSV_V2 = 'data/PS_20174392719_1491204439457_log.csv'
+CAMINHO_CSV_V2 = 'data/paysim.csv'
 CAMINHO_CSV_V4 = 'data/dataset_teste_fraude.csv'
 
 def rodar_algoritmos(grafo, nome_dataset):
@@ -56,6 +56,7 @@ def rodar_algoritmos(grafo, nome_dataset):
 
     print('\n--- Burst de envios em 24h (>=10 transações) ---')
     bursts_envio = nos_com_burst_transacoes(grafo, tipo='envio', janela_tempo_horas=24, limite=10)
+    print(f'Total de bursts de envio encontrados: {len(bursts_envio)}')
     for no, qtd, data_ini, data_fim in bursts_envio[:5]:
         print(f'No {no.id} enviou {qtd} transações entre {data_ini} e {data_fim}')
     if len(bursts_envio) > 5:
@@ -63,6 +64,7 @@ def rodar_algoritmos(grafo, nome_dataset):
 
     print('\n--- Burst de recebimentos em 24h (>=10 transações) ---')
     bursts_receb = nos_com_burst_transacoes(grafo, tipo='recebimento', janela_tempo_horas=24, limite=10)
+    print(f'Total de bursts de recebimento encontrados: {len(bursts_receb)}')
     for no, qtd, data_ini, data_fim in bursts_receb[:5]:
         print(f'No {no.id} recebeu {qtd} transações entre {data_ini} e {data_fim}')
     if len(bursts_receb) > 5:
@@ -70,6 +72,7 @@ def rodar_algoritmos(grafo, nome_dataset):
 
     print('\n--- Outliers globais (valor muito acima da média do sistema) ---')
     outliers_globais = transacoes_outliers(grafo, n_std=3, por_no=False)
+    print(f'Total de outliers globais encontrados: {len(outliers_globais)}')
     for aresta in outliers_globais[:5]:
         print(f'{aresta.origem.id} -> {aresta.destino.id} | Valor: {aresta.valor}')
     if len(outliers_globais) > 5:
@@ -101,6 +104,7 @@ def rodar_algoritmos(grafo, nome_dataset):
 
     print('\n--- Hubs de envio (>=10 destinos únicos) ---')
     hubs_env = hubs_envio(grafo, limite=10)
+    print(f'Total de hubs de envio encontrados: {len(hubs_env)}')
     for no, qtd_dest in hubs_env[:5]:
         print(f'No {no.id} enviou para {qtd_dest} destinos únicos')
     if len(hubs_env) > 5:
@@ -108,6 +112,7 @@ def rodar_algoritmos(grafo, nome_dataset):
 
     print('\n--- Hubs de recebimento (>=10 origens únicas) ---')
     hubs_rec = hubs_recebimento(grafo, limite=10)
+    print(f'Total de hubs de recebimento encontrados: {len(hubs_rec)}')
     for no, qtd_ori in hubs_rec[:5]:
         print(f'No {no.id} recebeu de {qtd_ori} origens únicas')
     if len(hubs_rec) > 5:

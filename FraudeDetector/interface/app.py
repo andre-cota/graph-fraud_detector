@@ -1,6 +1,7 @@
 import streamlit as st
 from services.importador_csv import importar_transacoes_csv, importar_transacoes_csv_v2, importar_transacoes_csv_v3
 import os
+import time
 
 from views.ciclos import exibir_ciclos
 from views.ciclos_fraude import exibir_ciclos_fraude
@@ -40,7 +41,10 @@ def carregar_grafo(caminho, formato):
     else:
         return importar_transacoes_csv_v2(os.path.join(data_dir, caminho))
 
+inicio = time.time()
 grafo = carregar_grafo(file_csv, formato)
+tempo_exec = time.time() - inicio
+st.sidebar.write(f"Tempo de carregamento: {tempo_exec:.4f} segundos")
 st.sidebar.success(f"Grafo carregado com {len(grafo.nos)} nós e {len(grafo.arestas)} transações.")
 
 analise = st.sidebar.selectbox(
