@@ -19,7 +19,9 @@ Ferramenta de Processamento de Dados com Grafos para Detecção de Fraudes em Re
 
 ## Video de apresentação
 
-![Vídeo de Apresentação](https://drive.google.com/file/d/13zLdPffLBWvbcXpnHBUOdZQpNcS2z5rw/view)
+https://github.com/user-attachments/assets/d8a56327-aa3c-486b-85a7-280f6364e98f
+
+Para uma maior resolução utilize esse link: ![Link Video](https://drive.google.com/file/d/15Usy5loJbKngdCWUY2AjWt4hcbNW2tZ5/view?usp=sharing)
 
 ## Estrutura do Projeto
 
