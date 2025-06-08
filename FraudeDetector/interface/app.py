@@ -1,5 +1,5 @@
 import streamlit as st
-from services.importador_csv import importar_transacoes_csv, importar_transacoes_csv_v3
+from services.importador_csv import importar_transacoes_csv, importar_transacoes_csv_v2, importar_transacoes_csv_v3
 import os
 
 from views.ciclos import exibir_ciclos
@@ -26,7 +26,8 @@ formato = st.sidebar.selectbox(
     "Formato do arquivo:",
     [
         "Fraud Detection on Bank Payments",
-        "Fraud Detection in Transactions Dataset"
+        "Fraud Detection in Transactions Dataset",
+        "Fraud Detection in Paysim Transactions Dataset",
     ]
 )
 
@@ -34,8 +35,10 @@ formato = st.sidebar.selectbox(
 def carregar_grafo(caminho, formato):
     if formato == "Fraud Detection on Bank Payments":
         return importar_transacoes_csv(os.path.join(data_dir, caminho))
-    else:
+    elif formato == "Fraud Detection in Transactions Dataset":
         return importar_transacoes_csv_v3(os.path.join(data_dir, caminho))
+    else:
+        return importar_transacoes_csv_v2(os.path.join(data_dir, caminho))
 
 grafo = carregar_grafo(file_csv, formato)
 st.sidebar.success(f"Grafo carregado com {len(grafo.nos)} nós e {len(grafo.arestas)} transações.")

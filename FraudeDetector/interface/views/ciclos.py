@@ -10,7 +10,7 @@ def exibir_ciclos(grafo, st):
     st.write(f"Total de ciclos encontrados: {len(ciclos)}")
     st.write(f"Tempo de execução: {tempo_exec:.4f} segundos")
     st.write("Complexidade: O(V + E) por busca, potencialmente exponencial para todos os ciclos (DFS recursivo)")
-    st.dataframe(pd.DataFrame(ciclos, columns=["Caminho dos Nós"]))
+    st.dataframe(pd.DataFrame([[', '.join(map(str, ciclo))] for ciclo in ciclos], columns=["Caminho dos Nós"]))
     if ciclos:
         idx = st.number_input("Visualizar ciclo de índice:", min_value=0, max_value=len(ciclos)-1, value=0)
         ciclo = ciclos[idx]

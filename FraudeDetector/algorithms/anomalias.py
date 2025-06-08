@@ -119,6 +119,7 @@ def encontrar_clusters(grafo: Grafo, tamanho_min=3):
     for no in grafo.nos:
         if no not in visitado:
             dfs1(no)
+    # Grafo transposto
     transposto = {no: [] for no in grafo.nos}
     for no in grafo.nos:
         for aresta in no.transacoes_saida:
@@ -135,8 +136,11 @@ def encontrar_clusters(grafo: Grafo, tamanho_min=3):
         if no not in visitado:
             componente = []
             dfs2(no, componente)
+            # Ordena IDs para garantir unicidade
             if len(componente) >= tamanho_min:
-                clusters.append(componente)
+                ids = sorted([n.id for n in componente])
+                if ids not in [sorted([n.id for n in c]) for c in clusters]:
+                    clusters.append(componente)
     return clusters
 
 def pares_recorrentes(grafo: Grafo, limite=3):

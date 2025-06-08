@@ -1,9 +1,11 @@
-from services.importador_csv import importar_transacoes_csv, importar_transacoes_csv_v3
+from services.importador_csv import importar_transacoes_csv, importar_transacoes_csv_v3, importar_transacoes_csv_v2
 from algorithms.detecao_ciclos import encontrar_ciclos, encontrar_ciclos_fraude
 from algorithms.anomalias import nos_com_muitos_envios, nos_com_muitos_recebimentos, transacoes_valor_alto, nos_com_burst_transacoes, transacoes_outliers, ranking_nos_ativos, hubs_envio, hubs_recebimento, encontrar_clusters, pares_recorrentes
 
 CAMINHO_CSV_KAGGLE = 'data/bs140513_032310.csv'
 CAMINHO_CSV_NOVO = 'data/fraud_detection.csv'
+CAMINHO_CSV_V2 = 'data/PS_20174392719_1491204439457_log.csv'
+CAMINHO_CSV_V4 = 'data/dataset_teste_fraude.csv'
 
 def rodar_algoritmos(grafo, nome_dataset):
     print(f'\n==============================')
@@ -131,8 +133,14 @@ def main():
     grafo_kaggle = importar_transacoes_csv(CAMINHO_CSV_KAGGLE)
     rodar_algoritmos(grafo_kaggle, '1° - Fraud Detection on Bank Payments')
 
+    grafo_teste = importar_transacoes_csv(CAMINHO_CSV_V4)
+    rodar_algoritmos(grafo_teste, '2° - Dataset de Teste')
+
     grafo_novo = importar_transacoes_csv_v3(CAMINHO_CSV_NOVO)
-    rodar_algoritmos(grafo_novo, '2° - Fraud Detection in Transactions Dataset')
+    rodar_algoritmos(grafo_novo, '3° - Fraud Detection in Transactions Dataset')
+
+    grafo_v2 = importar_transacoes_csv_v2(CAMINHO_CSV_V2)
+    rodar_algoritmos(grafo_v2, '4° - Novo Formato com Campos Adicionais')
 
 if __name__ == '__main__':
     main()
