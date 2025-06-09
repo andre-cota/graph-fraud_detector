@@ -7,7 +7,7 @@ Esse repositorio visa armazenar e documentar o trabalho de grafos do quinto per√
 
 - Andre Cota
 - Gustavo Prehl
-- Jhonathan Gutemberg
+- Jhonatan Gutemberg
 - Nata Torres
 - Vinicius Salles
 
