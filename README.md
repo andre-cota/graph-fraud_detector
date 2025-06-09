@@ -144,7 +144,7 @@ Limite mínimo de transações para considerar o par como recorrente.
 
 ## Próximos Passos
 - Interface Gráfica Interativa: Desenvolver o front-end com bibliotecas de visualizacão como D3.js ou Vis.js para permitir que o usuário explore o grafo de forma interativa (zoom, pan, clique em nós para ver detalhes), melhorando a usabilidade.
-• Escalabilidade com Banco de Dados de Grafo: Para analisar datasets na escala de bilhões de transacões.
-• Análise em Tempo Real: Integrar a ferramenta a um sistema de streaming (ex: Apache Kafka) para analisar transacões em tempo real e gerar alertas de fraude com baixa latência.
-• Modelos de Machine Learning: Incorporar algoritmos de aprendizado de máquina em grafos (Graph Neural Networks - GNNs) para classificar nós e arestas
+- Escalabilidade com Banco de Dados de Grafo: Para analisar datasets na escala de bilhões de transacões.
+- Análise em Tempo Real: Integrar a ferramenta a um sistema de streaming (ex: Apache Kafka) para analisar transacões em tempo real e gerar alertas de fraude com baixa latência.
+- Modelos de Machine Learning: Incorporar algoritmos de aprendizado de máquina em grafos (Graph Neural Networks - GNNs) para classificar nós e arestas
 como fraudulentos ou não, aprendendo os padrões a partir de dados históricos.
